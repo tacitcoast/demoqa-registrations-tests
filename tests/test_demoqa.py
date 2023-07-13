@@ -1,58 +1,36 @@
-from selene import browser, have, be
-import os
+from selene import have
+from demoqa.pages.registration_page import RegistrationPage
 
 
 def test_registration_demoqa():
-    browser.open('https://demoqa.com/automation-practice-form/')
-    browser.execute_script('document.querySelector("#fixedban").remove()')
-    browser.element('footer').execute_script('element.remove()')
+    # GIVEN
+    registration_page = RegistrationPage()
+    registration_page.open()
 
-    # We check that we have opened the registration form
-    browser.all("h5").element_by(have.exact_text("Student Registration Form"))
+    # WHEN
+    (
+        registration_page
+        .fill_first_name('Anna')
+        .fill_last_name('Malinovskaia')
+        .fill_email('tests@demoqa.com')
+        .fill_gender('Other')
+        .fill_mobile('9115678907')
+        .fill_date_of_birth('11', 'January', '1989')
+        .fill_subjects('Maths')
+        .fill_hobbies('Reading')
+        .select_picture('kotik.jpeg')
+        .fill_address('Russia, Moscow, str.Testers')
+        .fill_state('NCR')
+        .fill_city('Delhi')
+        .submit_form()
+    )
 
-    # Fill in Name, Email, Gender, Mobile
-    browser.element('#firstName').should(be.blank).type('Anna')
-    browser.element('#lastName').should(be.blank).type('Malinovskaia')
-    browser.element('#userEmail').should(be.blank).type('test@demoqa.com')
-    browser.all('#genterWrapper label').element_by(have.exact_text('Other')).click()
-    browser.element('#userNumber').should(be.blank).type('9115678907')
-
-    # Choosing the date of birth
-    browser.element('#dateOfBirthInput').click()
-    browser.element('.react-datepicker__month-select').click()
-    browser.element('[value="0"]').click()
-    browser.element('.react-datepicker__year-select').click()
-    browser.element('[value="1989"]').click()
-    browser.element('.react-datepicker__day--011').click()
-
-    # Fill Subjects, Hobbies
-    browser.element('#subjectsInput').type('ma')
-    browser.all("#subjectsWrapper div").element_by(have.exact_text("Maths")).click()
-    browser.all('#hobbiesWrapper label').element_by(have.exact_text('Reading')).click()
-
-    # Uploading a picture
-    browser.element('#uploadPicture').send_keys(os.path.abspath('resources/kotik.jpeg'))
-
-    # Fill Current Address
-    browser.element('#currentAddress').should(be.blank).type('Russia, Moscow, str.Testers')
-
-    # Fill State and City
-    browser.element('#state').click()
-    browser.all("#state div").element_by(have.exact_text("NCR")).click()
-    browser.element('#city').click()
-    browser.all("#city div").element_by(have.exact_text("Delhi")).click()
-
-    # Click the register button
-    browser.element('#submit').click()
-
-    # Check that the modal window has appeared
-    browser.element('#example-modal-sizes-title-lg').should(have.text('Thanks for submitting the form'))
-
-    # We check that our text is filled in
-    browser.element('.table').all('td').even.should(
+    # THEN
+    registration_page.should_have_text('Thanks for submitting the form')
+    registration_page.registered_user_data.should(
         have.texts(
             'Anna Malinovskaia',
-            'test@demoqa.com',
+            'tests@demoqa.com',
             'Other',
             '9115678907',
             '11 January,1989',
@@ -64,8 +42,8 @@ def test_registration_demoqa():
         )
     )
 
-    # Closing the window
-    browser.element('#closeLargeModal').click()
+    # WHEN
+    registration_page.close()
 
-    # We check that the form is empty
-    browser.element('#firstName').should(be.blank)
+    # THEN
+    registration_page.should_be_clean()
