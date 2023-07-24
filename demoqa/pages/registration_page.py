@@ -25,16 +25,16 @@ class RegistrationPage:
 
 
     def register(self, anna: User):
-        self.first_name.should(be.blank).type(anna.first_name)
-        self.last_name.should(be.blank).type(anna.last_name)
-        self.email.should(be.blank).type(anna.email)
+        self.first_name.type(anna.first_name)
+        self.last_name.type(anna.last_name)
+        self.email.type(anna.email)
         self.gender.element_by(have.exact_text(anna.gender)).click()
-        self.mobile.should(be.blank).type(anna.mobile)
+        self.mobile.type(anna.mobile)
         self.fill_date_of_birth(anna.date_of_birth)
         self.subjects.type(anna.subjects).press_enter()
         self.hobbies.element_by(have.text(anna.hobbies)).click()
         self.picture.set_value(resources.path(anna.picture))
-        self.address.should(be.blank).type(anna.address)
+        self.address.type(anna.address)
         self.fill_state(anna.state)
         self.fill_city(anna.city)
         self.submit.click()

@@ -1,12 +1,17 @@
 import datetime
+
+from allure_commons.types import Severity
+
 from demoqa.data.users import User
 from demoqa.pages.registration_page import RegistrationPage
 import allure
 
 
 @allure.title('Successful fill registration form')
-@allure.tag("web")
+@allure.tag("WEB")
+@allure.severity(Severity.CRITICAL)
 @allure.label("owner", "Anna Malinovskaia")
+@allure.feature("Регистрационная форма студента")
 @allure.story("Пользователь может зарегестрироваться")
 def test_registration_user():
     registration_page = RegistrationPage()
