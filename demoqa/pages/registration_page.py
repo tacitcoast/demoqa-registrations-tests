@@ -20,10 +20,10 @@ class RegistrationPage:
 
     def open(self):
         browser.open('https://demoqa.com/automation-practice-form/')
-        browser.execute_script('document.querySelector("#fixedban").remove()')
-        browser.element('footer').execute_script('element.remove()')
-        # We check that we have opened the registration form
-        browser.all("h5").element_by(have.exact_text("Student Registration Form"))
+
+        browser.driver.execute_script("$('footer').remove()")
+        browser.driver.execute_script("$('#fixedban').remove()")
+
 
     def register(self, anna: User):
         self.first_name.should(be.blank).type(anna.first_name)
