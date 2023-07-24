@@ -5,6 +5,8 @@ from selenium.webdriver.chrome.options import Options
 from selene import Browser, Config, browser
 from dotenv import load_dotenv
 from utils import attach
+from selenium import webdriver
+driver = webdriver.Chrome(executable_path=r'your\path\chromedriver.exe')
 
 import tests
 
