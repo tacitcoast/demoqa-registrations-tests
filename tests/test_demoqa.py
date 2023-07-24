@@ -1,8 +1,13 @@
 import datetime
 from demoqa.data.users import User
 from demoqa.pages.registration_page import RegistrationPage
+import allure
 
 
+@allure.title('Successful fill registration form')
+@allure.tag("web")
+@allure.label("owner", "Anna Malinovskaia")
+@allure.story("Пользователь может зарегестрироваться")
 def test_registration_user():
     registration_page = RegistrationPage()
 
@@ -21,6 +26,11 @@ def test_registration_user():
         city='Delhi'
     )
 
-    registration_page.open()
-    registration_page.register(anna)
-    registration_page.should_have_registred(anna)
+    with allure.step('Open registration form'):
+        registration_page.open()
+
+    with allure.step('Fill registration form'):
+        registration_page.register(anna)
+
+    with allure.step('Check results'):
+        registration_page.should_have_registred(anna)
