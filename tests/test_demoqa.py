@@ -5,9 +5,6 @@ import allure
 
 
 @allure.title('Successful fill registration form')
-@allure.tag("web")
-@allure.label("owner", "Anna Malinovskaia")
-@allure.story("Пользователь может зарегестрироваться")
 def test_registration_user():
     registration_page = RegistrationPage()
 
