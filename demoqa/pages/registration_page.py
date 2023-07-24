@@ -6,7 +6,7 @@ from demoqa.pages import resources
 class RegistrationPage:
 
     def __init__(self):
-        self.registered_user_data = browser.element('.table').all('td').even
+        self.registered_user_data = browser.element('.table').all('td')
         self.first_name = browser.element('#firstName')
         self.last_name = browser.element('#lastName')
         self.email = browser.element('#userEmail')
