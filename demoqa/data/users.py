@@ -18,6 +18,7 @@ class User:
     city: str
 
 
+@dataclasses.dataclass
 class User2:
     full_name: str
     email: str
