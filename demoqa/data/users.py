@@ -16,3 +16,10 @@ class User:
     address: str
     state: str
     city: str
+
+
+class User2:
+    full_name: str
+    email: str
+    current_address: str
+    permanent_address: str
