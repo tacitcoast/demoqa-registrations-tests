@@ -4,7 +4,7 @@ from demoqa.pages.application import app
 import allure
 from demoqa.pages.simple_user_registration_page import SimpleUserRegistrationPage
 
-@allure.title('Successful fill registration form')
+@allure.title('Successful fill simple registration form')
 @allure.tag("WEB")
 @allure.severity(Severity.CRITICAL)
 @allure.label("owner", "Anna Malinovskaia")
@@ -22,7 +22,7 @@ def test_registration_user():
         app.simplified_registration.open()
 
     # WHEN
-    with allure.step('Fill registration form'):
+    with allure.step('Fill simple registration form'):
         app.simplified_registration.register(anna)
 
     # THEN
