@@ -5,6 +5,7 @@
 3. Теория. Мониторинг
 
 [Конспект лекции](https://github.com/qa-guru/knowledge-base)
+
 [Библиотека Allure notifications](https://github.com/qa-guru/allure-notifications)
 
 ## Задание
