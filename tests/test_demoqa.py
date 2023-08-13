@@ -1,7 +1,5 @@
 import datetime
-
 from allure_commons.types import Severity
-
 from demoqa.data.users import User
 from demoqa.pages.registration_page import RegistrationPage
 import allure
