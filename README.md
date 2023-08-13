@@ -19,3 +19,4 @@
 Тест на регистрацию лежит в этом бренче - jenkins-parameters.
 1. [Сборка в Jenkins с параметрами](https://jenkins.autotests.cloud/job/student-malinovskaia-anna-6-16-jenkins-parameters/)
 
+<img width="1119" alt="jenkins" src="https://github.com/tacitcoast/demoqa-registrations-tests/assets/44261093/28e58964-303e-486f-9b5f-4edd2df1c3ef">
