@@ -2,7 +2,6 @@ from allure_commons.types import Severity
 from demoqa.data.users import User2
 from demoqa.pages.application import app
 import allure
-from demoqa.pages.simple_user_registration_page import SimpleUserRegistrationPage
 
 
 @allure.title('Successful fill simple registration form')
