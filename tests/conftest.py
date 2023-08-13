@@ -2,7 +2,7 @@ import os
 import pytest
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from selene import Browser, Config, browser
+from selene import Config, browser
 from dotenv import load_dotenv
 from utils import attach
 
@@ -29,6 +29,7 @@ def setup_browser(request):
     browser_version = request.config.getoption('--browser_version')
     browser_version = browser_version if browser_version != "" else DEFAULT_BROWSER_VERSION
     options = Options()
+
     selenoid_capabilities = {
         "browserName": "chrome",
         "browserVersion": browser_version,
@@ -42,6 +43,7 @@ def setup_browser(request):
     password = os.getenv('PASSWORD')
 
     options.capabilities.update(selenoid_capabilities)
+
     driver = webdriver.Remote(
         command_executor=f"https://{login}:{password}@selenoid.autotests.cloud/wd/hub",
         options=options
